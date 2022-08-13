@@ -25,12 +25,6 @@ using namespace dlib;
 // integration.
 
 // x in [0,1]
-double gg1(double x)
-{
-   return pow(e, x);
-}
-
-// x in [0,1]
 double gg2(double x)
 {
    return x * x;
@@ -67,7 +61,7 @@ int main()
    // Here we compute the integrals of the five functions defined above using the same
    // tolerance level for each.
 
-   double m1 = integrate_function_adapt_simp(&gg1, 0.0, 1.0, tol);
+   double m1 = integrate_function_adapt_simp([](double x){return pow(e, x);}, 0.0, 1.0, tol);
    double m2 = integrate_function_adapt_simp(&gg2, 0.0, 1.0, tol);
    double m3 = integrate_function_adapt_simp(&gg3, 0.0, pi, tol);
    double m4 = integrate_function_adapt_simp(&gg4, -pi, pi, tol);
